@@ -1,0 +1,64 @@
+env:
+  browser: true
+  es2023: true
+  "jest/globals": true
+extends:
+  - "eslint:recommended"
+  - "plugin:import/errors"
+  - "plugin:import/warnings"
+  - "plugin:import/typescript"
+  - "plugin:jest/recommended"
+  - "plugin:jest/style"
+  - "plugin:promise/recommended"
+  - "plugin:@typescript-eslint/recommended"
+  - "prettier"
+parser: "@typescript-eslint/parser"
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: "latest"
+  sourceType: "module"
+  project: "tsconfig.json"
+plugins:
+  - "@typescript-eslint"
+  - "import"
+  - "jest"
+  - "prettier"
+  - "promise"
+root: true
+rules:
+  "@typescript-eslint/no-floating-promises":
+    - error
+    - ignoreIIFE: true
+      ignoreVoid: true
+  "@typescript-eslint/no-inferrable-types": "off"
+  "@typescript-eslint/no-unused-vars":
+    - error
+    - argsIgnorePattern: "_"
+      varsIgnorePattern: "_"
+  # camelcase:
+  #   - error:
+  #       - always
+  #   - properties: "allow"
+  #     allow:
+  #       - "'(.*?)__factory'"
+  "import/first": "error"
+  "import/newline-after-import": "error"
+  "import/no-duplicates": "error"
+  "jest/no-export": "off"
+  "no-extra-boolean-cast": "off" # TODO: undo
+  "prettier/prettier": "error"
+  semi:
+    - error
+    - always
+# settings:
+#   "import/resolver":
+#     node:
+#       extensions:
+#         - ".js"
+#         - ".jsx"
+#         - ".ts"
+#         - ".tsx"
+#       moduleDirectory:
+#         - "node_modules"
+#         - "src/"

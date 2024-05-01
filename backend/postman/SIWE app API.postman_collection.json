@@ -1,0 +1,802 @@
+{
+  "info": {
+    "_postman_id": "dff598a5-93e5-40af-b946-2cf51631548b",
+    "name": "SIWE app API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "v1 health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "health"]
+        },
+        "description": "Get the profile of the address signed-in"
+      },
+      "response": []
+    },
+    {
+      "name": "ping",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/ping",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "ping"]
+        },
+        "description": "Get the profile of the address signed-in"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 authSIWE nonce",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/auth/siwe/nonce",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "auth", "siwe", "nonce"]
+        },
+        "description": "GET SIWE nonce"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 authSIWE addr1",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"message\": {\n        \"domain\": \"localhost:8080\",\n        \"address\": \"0x9D85ca56217D2bb651b00f15e694EB7E713637D4\",\n        \"uri\": \"http://localhost:8080\",\n        \"version\": \"1\",\n        \"chainId\": 1,\n        \"nonce\": \"spAsCWHwxsQzLcMzi\",\n        \"statement\": \"Sign in with Ethereum to the app.\",\n        \"issuedAt\": \"2022-01-29T03:22:26.716Z\"\n    },\n    \"signature\": \"0xe117ad63b517e7b6823e472bf42691c28a4663801c6ad37f7249a1fe56aa54b35bfce93b1e9fa82da7d55bbf0d75ca497843b0702b9dfb7ca9d9c6edb25574c51c\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/auth/siwe/signin",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "auth", "siwe", "signin"]
+        },
+        "description": "POST SIWE verify"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 authSIWE addr2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"message\": {\n        \"domain\": \"localhost:8080\",\n        \"address\": \"0x97FDCfC2a4876200282B00873777B6b097D4435c\",\n        \"uri\": \"http://localhost:8080\",\n        \"version\": \"1\",\n        \"chainId\": 1,\n        \"nonce\": \"xCpYAj6IxpNRobIHo\",\n        \"statement\": \"Sign in with Ethereum to the app.\",\n        \"issuedAt\": \"2024-04-23T08:26:15.290Z\"\n    },\n    \"signature\": \"0xf6b4dfaba4a9baeffa2cb9de17ed92b5af3b935a28e41836594686f8341fd4677b115b676eb7e73de20856864563298c8679e129903ce4460d77be6e0d0e9b111b\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/auth/siwe/signin",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "auth", "siwe", "signin"]
+        },
+        "description": "POST SIWE verify"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 authSIWE addr1 signIn (message string)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"message\":\"localhost:8080 wants you to sign in with your Ethereum account:\\n0x9D85ca56217D2bb651b00f15e694EB7E713637D4\\n\\nSign in with Ethereum to the app.\\n\\nURI: http://localhost:8080\\nVersion: 1\\nChain ID: 1\\nNonce: spAsCWHwxsQzLcMzi\\nIssued At: 2022-01-29T03:22:26.716Z\",\n    \"signature\":\"0xe117ad63b517e7b6823e472bf42691c28a4663801c6ad37f7249a1fe56aa54b35bfce93b1e9fa82da7d55bbf0d75ca497843b0702b9dfb7ca9d9c6edb25574c51c\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/auth/siwe/signin",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "auth", "siwe", "signin"]
+        },
+        "description": "POST SIWE verify"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 authSIWE addr1 signIn KO (invalid signature)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"message\":\"localhost:8080 wants you to sign in with your Ethereum account:\\n0x9D85ca56217D2bb651b00f15e694EB7E713637D4\\n\\nSign in with Ethereum to the app.\\n\\nURI: http://localhost:8080\\nVersion: 1\\nChain ID: 1\\nNonce: spAsCWHwxsQzLcMzi\\nIssued At: 2022-01-29T03:22:26.716Z\",\n    \"signature\":\"0xe117ad63b517e7b6823e472bf42691c28a4663801c6ad37f7249a1fe56aa54b35bfce93b1e9fa82da7d55bbf0d75ca497843b0702b9dfb7ca9d9c6edb25574c510\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/auth/siwe/signin",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "auth", "siwe", "signin"]
+        },
+        "description": "POST SIWE verify"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 authSIWE addr1 signIn KO (invalid nonce)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"message\":\"localhost:8080 wants you to sign in with your Ethereum account:\\n0x9D85ca56217D2bb651b00f15e694EB7E713637D4\\n\\nSign in with Ethereum to the app.\\n\\nURI: http://localhost:8080\\nVersion: 1\\nChain ID: 1\\nNonce: apAsCWHwxsQzLcMzi\\nIssued At: 2022-01-29T03:22:26.716Z\",\n    \"signature\":\"0xe117ad63b517e7b6823e472bf42691c28a4663801c6ad37f7249a1fe56aa54b35bfce93b1e9fa82da7d55bbf0d75ca497843b0702b9dfb7ca9d9c6edb25574c51c\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/auth/siwe/signin",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "auth", "siwe", "signin"]
+        },
+        "description": "POST SIWE verify"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x9D85ca56217D2bb651b00f15e694EB7E713637D4"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr2",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x97FDCfC2a4876200282B00873777B6b097D4435c"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile KO (missing :address in path)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": ""
+            }
+          ]
+        },
+        "description": "Get the profile of the address signed-in"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr1 KO (not checksum or lowercase :address in path)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x9D85ca56217D2bb651b00f15e694EB7E713637d4",
+              "description": "last 'd' should be 'D'"
+            }
+          ]
+        },
+        "description": "Get the profile of the address signed-in"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile (session address != :address)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x999999cf1046e68e36E1aA2E0E07105eDDD1f08E"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr1",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Address1 Name\",\n    \"bio\": \"Address2 Bio\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x9D85ca56217D2bb651b00f15e694EB7E713637D4"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Address2 Name\",\n    \"bio\": \"Address2 Bio\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x97FDCfC2a4876200282B00873777B6b097D4435c"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile KO (not checksum or lowercase :address in path)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Pepe The Frog\", \"bio\": null}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x999999cf1046e68e36E1aA2E0E07105eDDD1f08e",
+              "description": "last 'e' should be 'E'"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile KO (session address != :address)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Pepe The Frog\", \"bio\": null}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x999999cf1046e68e36E1aA2E0E07105eDDD1f08E",
+              "description": "it is not the signed-in address"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr1 KO (missing 'name' in body)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"bio\": \"Address profile.bio\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x9D85ca56217D2bb651b00f15e694EB7E713637D4"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr1 KO (missing 'bio' in body)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Pepe The Frog\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x9D85ca56217D2bb651b00f15e694EB7E713637D4"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr1 KO (empty body)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x9D85ca56217D2bb651b00f15e694EB7E713637D4"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr1 (update profile.bio)",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"bio\": null }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x9D85ca56217D2bb651b00f15e694EB7E713637D4"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr1 (update profile.name)",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"0x9D85ca56217D2bb651b00f15e694EB7E713637D4\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x9D85ca56217D2bb651b00f15e694EB7E713637D4"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr1 (update profile.name, profile.bio)",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Craigh Wright\",\n    \"bio\": \"Faketoshi Scamoto\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x9D85ca56217D2bb651b00f15e694EB7E713637D4"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile KO (profile.bio invalid type)",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"bio\": [null] }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x9D85ca56217D2bb651b00f15e694EB7E713637D4"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr1 KO (profile.name > 50 characters)",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"0x9D85ca56217D2bb651b00f15e694EB7E713637D4_01234567\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x9D85ca56217D2bb651b00f15e694EB7E713637D4"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr1 KO (empty body)",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x9D85ca56217D2bb651b00f15e694EB7E713637D4"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr1",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x9D85ca56217D2bb651b00f15e694EB7E713637D4"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr2",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x97FDCfC2a4876200282B00873777B6b097D4435c"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile addr1 KO (not checksum or lowercase :address in path)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x9D85ca56217D2bb651b00f15e694EB7E713637D4"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 profile KO (session address != :address)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/profile/:address",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "profile", ":address"],
+          "variable": [
+            {
+              "key": "address",
+              "value": "0x999999cf1046e68e36E1aA2E0E07105eDDD1f08E"
+            }
+          ]
+        },
+        "description": "Get the profile of a signed-in Ethereum address"
+      },
+      "response": []
+    },
+    {
+      "name": "v1 authSIWE signOff",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/auth/siwe/signoff",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "v1", "auth", "siwe", "signoff"]
+        },
+        "description": "Sign-off an already signed-in Ethereum address"
+      },
+      "response": []
+    }
+  ]
+}
